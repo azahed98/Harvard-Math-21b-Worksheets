@@ -1,0 +1,122 @@
+\documentclass[11pt,fleqn]{article}
+
+\include{exercises}
+\include{math_commands}
+\usepackage{tcolorbox}
+
+\Name{Claudia Hyun, Arsh Zahed}
+\Class{Worksheet 1}
+\Assignment{Math 21b}
+%\Date{Date here}
+
+\begin{document}
+
+\begin{center}
+\begin{tcolorbox}[title={\fontsize{13pt}{13pt}\selectfont Introduction to Linear Systems}, enforce breakable, pad at break=4mm, colframe=darkcrimson!100,colback=black!1,width=.9\linewidth,sharp corners=north]\fontsize{11.5pt}{12pt}\selectfont 
+A \textbf{linear equation} of the variables $x_1, \hdots, x_n$ is an equation that can be written of the form 
+$$
+a_1 x_1 + a_2 x_2 + \hdots + a_n x_n = b
+$$
+where $a_1, \hdots, a_n$ and $b$ are real or complex numbers, and n may be any positive integer. For example, the equation $3x = 6$ is a linear equation. Using basic algebra, you should be able to solve the equation to find that $x=2$. \\
+Similarly, you can create a \textbf{system of linear equations}, or a \textbf{linear system}. A linear system is a collection of linear equations with the same variables, such as 
+$$
+2x_1 + 3x_2 = 1
+$$ 
+$$
+3x_1 - x_2 = 7
+$$ 
+We can also represent the linear system with a \textbf{matrix} to make more sense of the equations. We place the coefficients of the above system in a two rows and two columns of a matrix, unsurprisingly called a \textbf{coefficient matrix}, as follows 
+$$\left[
+\begin{array}{cc}
+2 & 3 \\
+3 & -1 \\
+\end{array}
+\right]$$
+where the first column corresponds to $x_1$ and the second column with $x_2$. This isn't enough to find a solution though; we need the constant terms as well. We can append these in an \textbf{augmented matrix} as follows
+$$\left[
+\begin{array}{cc|c}
+2 & 3 & 1 \\
+3 & -1 & 7 \\
+\end{array}
+\right]$$
+where the column after the line represents the constant terms. 
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={\fontsize{13pt}{13pt}\selectfont Solving Linear Systems},enforce breakable, pad at break=4mm, colframe=darkcrimson!100,colback=black!1,width=.9\linewidth,sharp corners=north]\fontsize{11.5pt}{12pt}\selectfont
+A \textbf{solution} for the linear system is a combination of values for the variables that satisfies all the equations in the system. A linear system can fall under three categories.
+\begin{enumerate}
+\item One solution
+\item Infinitely many solutions
+\item No solution
+\end{enumerate}
+If the system has one or infinitely many solutions, it is said to be \textbf{consistent}. If it has no solution, it is \textbf{inconsistent}.
+\blni
+
+You may remember from Algebra that linear systems can be solved using methods such as substitution and graphing; however, we can use matrices to make solving linear systems easier. Before developing an algorithm for solving linear systems with matrices, let's address some specific rules and scenarios. \\
+When solving a matrix, the following procedures will not alter the solution.
+\begin{enumerate}
+\item Interchanging rows \\
+\item Scaling rows (multiplying by a nonzero constant) \\
+\item Adding/subtracting one row to/from another \\
+\end{enumerate}
+The process of using these rules to solve matrices is called \textbf{Gauss-Jordan Elimination}. Using these rules, we can simplify matrices till a solution is apparent. For example, consider the following example.
+$$\left[
+\begin{array}{ccc|c}
+1 & 2 & 0 & 7 \\
+0 & 2 & 0 & 4 \\
+0 & 1 & 1 & 6 \\
+\end{array}
+\right]$$
+We can subtract the second row from the first row and then scale the second row by a factor of $\frac{1}{2}$ to get reduce the matrix to
+$$\left[
+\begin{array}{ccc|c}
+1 & 0 & 0 & 3 \\
+0 & 1 & 0 & 2 \\
+0 & 1 & 1 & 6 \\
+\end{array}
+\right]$$
+We can now subtract the second row from the third row.
+$$\left[
+\begin{array}{ccc|c}
+1 & 0 & 0 & 3 \\
+0 & 1 & 0 & 2 \\
+0 & 0 & 1 & 4 \\
+\end{array}
+\right]$$
+Because all the nonzero coefficients are on the \textbf{diagonal} of the matrix, it is immediately clear that $x_1 = 3$, $x_2 = 2$ and $x_3 = 4$, giving us our solution.\\
+The last matrix, with all the nonzero terms on the diagonal, is in \textbf{reduced row-echelon} form. This is the goal when reducing matrices. The algorithm for reducing matrices to reduced row-echelon form is given in the lecture notes, but is duplicated here for convenience.\\
+
+\begin{tcolorbox}[title={\fontsize{13pt}{13pt}\selectfont Strategy for getting to the reduced row-echelon form},enforce breakable, pad at break=4mm, colframe=crimsom!80,colback=black!1,width=.9\linewidth,sharp corners=north]\fontsize{11.5pt}{12pt}\selectfont
+\begin{enumerate}
+
+\item Scale or interchange to produce a Leading 1 in the upper left position (if possible). A Leading 1 refers to
+
+where the first nonzero entry on a row (as read from left to right) is equal to 1.
+
+\item Use the first row as a pivot row, leaving it unchanged but adding (or subtracting) appropriate multiples of it
+
+to the other rows to produce 0s elsewhere in the column contain the Leading 1 (the first column in this
+
+case). We call this cleaning the column.
+
+\item Scale or interchange to produce a Leading 1 in the second row ? shifted one column to the right (possibly
+
+more).
+
+\item Using the second row as the pivot row to clean this next column leaving only the Leading 1 in the pivot row
+
+and 0s elsewhere in that column.
+
+\item Continue this process to get Leading 1s in each of the rows, shifting to the right as you descend through the
+
+rows.
+
+\item Any all-zero rows should appear at the bottom of the array.
+\end{enumerate}
+\end{tcolorbox}
+
+\end{tcolorbox}
+
+\end{center}
+
+\end{document}

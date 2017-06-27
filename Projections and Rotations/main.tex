@@ -1,0 +1,59 @@
+\documentclass[11pt,fleqn]{article}
+\usepackage{graphicx}
+\include{exercises}
+\include{math_commands}
+\usepackage{tcolorbox}
+
+\Name{Claudia Hyun, Arsh Zahed}
+\Class{MATH 21b}
+\Assignment{Worksheet ??}
+%\Date{Date here}
+
+\begin{document}
+
+\begin{center}
+\begin{tcolorbox}[title={\fontsize{13pt}{13pt}\selectfont The Dot Product}, enforce breakable, pad at break=4mm, colframe=darkcrimson!100,colback=black!1,width=.9\linewidth,sharp corners=north]\fontsize{11.5pt}{12pt}\selectfont 
+The \textbf{dot product}, or \textbf{inner product}, of two vectors $\textbf{u}, \textbf{v} \in \R^n$ is given by
+$$
+\textbf{u} \cdot \textbf{v} = u_1v_1 + u_2v_2 + \hdots + u_nv_n
+$$
+where $u_i$ is the $i$th entry of $\textbf{u}$ and $v_i$ is the $i$th entry of $\textbf{v}$. Additionally, we can calculate the dot product of two vectors with
+$$
+\textbf{u} \cdot \textbf{v} = \|\textbf{u}\| \|\textbf{v}\| \cos \theta
+$$
+where $\theta$ is the angle between the two vectors. As you can see, the dot product of two vectors outputs a scalar, not a vector, and the dot product is commutative. This is because the dot product $\textbf{u} \cdot \textbf{v}$ is the projection of $\textbf{u}$ on $\textbf{v}$, scaled by the magnitude of $\textbf{v}$, or vice versa.\\
+Additionally, dot products can be thought of as a measurement for how similar the directions of two vectors are. Of course, the magnitude affects the dot product, but as we will see later, this can be accounted for by dividing out the magnitudes. \\
+Relations to the Pythagorean Theorem and Law of Cosines are included in lecture notes, but are left out of this worksheet for the time being. I highly recommend you read over them regardless.
+\end{tcolorbox}
+\begin{exr}{}{1}
+Find the dot product $\textbf{u} \cdot \textbf{v}$ where $\textbf{u} = \begin{bmatrix} 1 \\ 0 \\ \end{bmatrix}$ and $\textbf{v} = \begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}$. How does the answer you get correspond to the angle between the two vectors?
+\end{exr}
+
+\begin{exr}{}{2}
+Prove that $r\textbf{u} \cdot \textbf{v} = r(\textbf{u} \cdot \textbf{v})$ for $\textbf{u}, \textbf{v} \in \R^n$ and $r \in \R$.
+
+\end{exr}
+
+\begin{tcolorbox}[title={\fontsize{13pt}{13pt}\selectfont Projection}, enforce breakable, pad at break=4mm, colframe=darkcrimson!100,colback=black!1,width=.9\linewidth,sharp corners=north]\fontsize{11.5pt}{12pt}\selectfont 
+
+Using dot products, it is possible to "project" vectors onto each other. If we want to find out how much of the vector $\textbf{v}$ is in the direction of vector $\textbf{u}$, we can start with the dot product $\textbf{v} \cdot \textbf{u}$. Regardless of the magnitude of $\textbf{u}$, we should calculate the same result, so we divide by the magnitude of $\textbf{u}$, leading us to
+$$
+\frac{\textbf{v} \cdot \textbf{u}}{\|\textbf{u}\|}
+$$
+This can be extended to find the \textbf{vector projection} of $\textbf{v}$ in the direction of $\textbf{u}$. Firstly, we multiply the scalar by $\textbf{u}$ to give a direction again. However, we don't want the the magnitude of $\textbf{u}$ to affect the vector projection, so we divide by $\|\textbf{u}\|$ again. Thus, our vector projection of $\textbf{v}$ on $\textbf{u}$ is given by
+$$
+\textit{Proj} _{\textbf{u}} \textbf{v} = \frac{\textbf{v} \cdot \textbf{u}}{\|\textbf{u}\|^2}\textbf{u} = \frac{\textbf{v} \cdot \textbf{u}}{\textbf{u} \cdot \textbf{u}}\textbf{u}
+$$
+\includegraphics{projection1.png}
+
+\end{tcolorbox}
+
+\begin{exr}{}{3}
+Prove that for a projection transformation $T \colon \R^n \rightarrow R^m$ where $m<n$, $\dim (\Ker (T)) > 0$. \blni
+
+Hint: Is $T$ invertible?
+\end{exr}
+
+\end{center}
+
+\end{document}
